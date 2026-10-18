@@ -40,7 +40,6 @@
       line-height: 1.6;
     }
 
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -75,7 +74,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10, 12, 16, 0.92);
+      background: rgba(10, 12, 16, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
     }
@@ -166,7 +165,7 @@
     .btn-outline {
       border-color: var(--border-subtle);
       color: var(--text-main);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .btn-outline:hover {
@@ -354,7 +353,7 @@
       color: var(--text-muted);
     }
 
-    /* Constitution Highlights */
+    /* Governance Section */
     .constitution-sec {
       padding: 5rem 0;
       background: #0d1017;
@@ -445,6 +444,11 @@
       letter-spacing: 0.5px;
     }
 
+    .form-group label .req {
+      color: #ef4444;
+      margin-left: 2px;
+    }
+
     .form-control {
       background: var(--bg-elevated);
       border: 1px solid var(--border-subtle);
@@ -501,6 +505,15 @@
       font-size: 0.85rem;
       color: #e2e8f0;
       margin: 1rem 0;
+    }
+
+    .info-note {
+      font-size: 0.8rem;
+      color: var(--accent-gold);
+      margin-top: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
     /* Contact Details Section */
@@ -622,7 +635,7 @@
     <div class="container">
       <nav>
         <a href="#" class="brand">
-          <img src="My Father's LOGO.png" alt="Mogoba Community Safety Logo" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/1063/1063376.png';" />
+          <img src="My Father's LOGO.png" alt="Mogoba Community Safety Logo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=100&auto=format&fit=crop&q=80';" />
           <div class="brand-text">
             <h1>MOGOBA SAFETY</h1>
             <span>Community Security Services</span>
@@ -646,7 +659,7 @@
         <div class="badge"><i class="fa-solid fa-shield-halved"></i> Vigilant • United • Dedicated</div>
         <h2>DEFENDING OUR STREETS, <span>SAFEGUARDING</span> OUR COMMUNITY.</h2>
         <p>
-          Mogoba Community Safety and Security Services (MCSSS) is dedicated to protecting families, organizing proactive neighbourhood patrols, and coordinating directly with law enforcement to maintain peace and order in Mokgoba.
+          Mogoba Community Safety and Security Services (MCSSS) is dedicated to protecting families, organizing proactive neighbourhood patrols, and coordinating directly with law enforcement to maintain peace and order in Mokgoba[cite: 1].
         </p>
         <div class="hero-actions">
           <a href="#join" class="btn btn-gold"><i class="fa-solid fa-user-plus"></i> Apply for Membership</a>
@@ -655,7 +668,7 @@
       </div>
       <div class="hero-emblem">
         <div class="hero-emblem-glow"></div>
-        <img src="My Father's LOGO.png" alt="Black Panther Emblem" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/1063/1063376.png';" />
+        <img src="My Father's LOGO.png" alt="Black Panther Emblem" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500&auto=format&fit=crop&q=80';" />
       </div>
     </div>
   </section>
@@ -730,7 +743,7 @@
           <ul>
             <li>Led by Chairperson, Deputy Chairperson, Secretary, and Treasurer.</li>
             <li>Elected democratically at the Annual General Meeting (AGM).</li>
-            <li>Accountable to quarterly reporting and transparent voting.</li>
+            <li>Accountable to regular reporting and transparent voting.</li>
           </ul>
         </div>
 
@@ -746,7 +759,7 @@
         <div class="pillar-box">
           <h5><i class="fa-solid fa-ban"></i> Anti-Sabotage Clause</h5>
           <ul>
-            <li>Zero tolerance for conflicts of interest or split loyalties.</li>
+            <li>Zero tolerance for conflicts of interest or split loyalties[cite: 2].</li>
             <li>Members cannot create, join, or support rival breakaway security groups.</li>
             <li>Breaches trigger prompt disciplinary review and expulsion.</li>
           </ul>
@@ -764,116 +777,119 @@
     </div>
   </section>
 
-  <!-- Official Membership Application Form (Extracted from Page 4) -->
+  <!-- Official Membership Application Form -->
   <section class="membership-sec" id="join">
     <div class="container">
       <div class="section-title">
         <div class="badge"><i class="fa-solid fa-file-signature"></i> Official Application</div>
         <h3>JOIN <span>MOGOBA SAFETY SERVICES</span></h3>
-        <p>Open to residents of Mokgoba aged 18 and older. Complete the constitution form below to join or renew.</p>
+        <p>Open to residents of Mokgoba aged 18 and older. All fields are strictly required and will be emailed directly to our Crime Prevention Desk.</p>
       </div>
 
       <div class="form-wrapper">
-        <form id="membershipForm" onsubmit="handleFormSubmit(event)">
+        <form id="membershipForm" onsubmit="sendFormToEmail(event)">
           <div class="form-grid">
             <div class="form-group full-width">
-              <label>Membership Category</label>
+              <label>Membership Category <span class="req">*</span></label>
               <div class="radio-group">
                 <label class="custom-check">
-                  <input type="radio" name="membership_type" value="New" checked /> New Member
+                  <input type="radio" name="membership_type" value="New Member" checked required /> New Member
                 </label>
                 <label class="custom-check">
-                  <input type="radio" name="membership_type" value="Renewal" /> Renewal (Existing Member)
+                  <input type="radio" name="membership_type" value="Renewal" required /> Renewal (Existing Member)
                 </label>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="firstName">First Name(s) *</label>
+              <label for="firstName">First Name(s) <span class="req">*</span></label>
               <input type="text" id="firstName" class="form-control" placeholder="e.g. Sipho" required />
             </div>
 
             <div class="form-group">
-              <label for="lastName">Surname *</label>
+              <label for="lastName">Surname <span class="req">*</span></label>
               <input type="text" id="lastName" class="form-control" placeholder="e.g. Mokoena" required />
             </div>
 
             <div class="form-group">
-              <label for="idNumber">South African ID or Passport No. *</label>
-              <input type="text" id="idNumber" class="form-control" placeholder="13-digit ID number" required />
+              <label for="idNumber">South African ID or Passport No. <span class="req">*</span></label>
+              <input type="text" id="idNumber" class="form-control" placeholder="13-digit ID or Passport" required />
             </div>
 
             <div class="form-group">
-              <label for="dob">Date of Birth *</label>
+              <label for="dob">Date of Birth <span class="req">*</span></label>
               <input type="date" id="dob" class="form-control" required />
             </div>
 
             <div class="form-group">
-              <label for="cellNumber">Phone Number *</label>
+              <label for="cellNumber">Cell Phone Number <span class="req">*</span></label>
               <input type="tel" id="cellNumber" class="form-control" placeholder="082 000 0000" required />
             </div>
 
             <div class="form-group">
-              <label for="emailAddr">Email Address</label>
-              <input type="email" id="emailAddr" class="form-control" placeholder="name@example.com" />
+              <label for="emailAddr">Applicant Email Address <span class="req">*</span></label>
+              <input type="email" id="emailAddr" class="form-control" placeholder="applicant@example.com" required />
             </div>
 
             <div class="form-group">
-              <label for="physicalAddr">Physical Address (Mokgoba) *</label>
-              <input type="text" id="physicalAddr" class="form-control" placeholder="House / Stand Number, Street" required />
+              <label for="physicalAddr">Physical Address (Mokgoba) <span class="req">*</span></label>
+              <input type="text" id="physicalAddr" class="form-control" placeholder="House / Stand Number, Street Name" required />
             </div>
 
             <div class="form-group">
-              <label for="sectionArea">Section / Ward</label>
-              <input type="text" id="sectionArea" class="form-control" placeholder="e.g. Extension 37 / Zone 2" />
+              <label for="sectionArea">Section / Ward <span class="req">*</span></label>
+              <input type="text" id="sectionArea" class="form-control" placeholder="e.g. Extension 37 / Zone 2" required />
             </div>
 
             <div class="form-group full-width">
-              <label>Why do you wish to join / continue with Mogoba Safety? (Select all that apply)</label>
-              <div class="checkbox-group">
+              <label>Why join/continue with Mogoba Safety? (Select at least one) <span class="req">*</span></label>
+              <div class="checkbox-group" id="reasonsGroup">
                 <label class="custom-check">
-                  <input type="checkbox" name="reason" value="improve_safety" /> Improve neighbourhood safety
+                  <input type="checkbox" name="reason" value="Improve neighbourhood safety" /> Improve neighbourhood safety
                 </label>
                 <label class="custom-check">
-                  <input type="checkbox" name="reason" value="volunteer_patrols" /> Volunteer for patrols & events
+                  <input type="checkbox" name="reason" value="Volunteer for patrols/events" /> Volunteer for patrols/events
                 </label>
                 <label class="custom-check">
-                  <input type="checkbox" name="reason" value="safety_tips" /> Receive safety tips / alerts
+                  <input type="checkbox" name="reason" value="Receive safety tips/alerts" /> Receive safety tips/alerts
                 </label>
                 <label class="custom-check">
-                  <input type="checkbox" name="reason" value="community_init" /> Support community initiatives
+                  <input type="checkbox" name="reason" value="Support community initiatives" /> Support community initiatives
                 </label>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="emergencyName">Emergency Contact Name</label>
-              <input type="text" id="emergencyName" class="form-control" placeholder="Next of kin full name" />
+              <label for="emergencyName">Emergency Contact Name <span class="req">*</span></label>
+              <input type="text" id="emergencyName" class="form-control" placeholder="Next of kin full name" required />
             </div>
 
             <div class="form-group">
-              <label for="emergencyPhone">Emergency Contact Phone</label>
-              <input type="tel" id="emergencyPhone" class="form-control" placeholder="Emergency phone" />
+              <label for="emergencyPhone">Emergency Contact Phone <span class="req">*</span></label>
+              <input type="tel" id="emergencyPhone" class="form-control" placeholder="Emergency telephone number" required />
             </div>
 
             <div class="form-group full-width">
-              <label for="skills">Skills & Experience (Optional)</label>
-              <input type="text" id="skills" class="form-control" placeholder="e.g. First Aid, security background, legal, vehicle mechanic, radio communications" />
+              <label for="skills">Skills & Experience (First Aid, Security, Legal, etc.) <span class="req">*</span></label>
+              <input type="text" id="skills" class="form-control" placeholder="State your experience or write 'None'" required />
             </div>
 
             <div class="form-group full-width declaration-box">
               <label class="custom-check" style="background: transparent; border: none; padding: 0;">
                 <input type="checkbox" id="declaration" required />
                 <span>
-                  <strong>Official Declaration:</strong> I agree to abide by the Mogoba Community Safety and Security Services constitution and code of conduct. I understand membership can be terminated for misconduct, breaches of discipline, or misleading the organization.
+                  <strong>Official Declaration:</strong> I agree to abide by the Mogoba Community Safety and Security Services constitution and code of conduct. I understand membership can be terminated for misconduct or misleading members. <span class="req">*</span>
                 </span>
               </label>
             </div>
 
             <div class="form-group full-width">
-              <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; padding: 0.9rem; font-size: 1rem;">
-                <i class="fa-solid fa-paper-plane"></i> Submit Membership Application
+              <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; padding: 0.95rem; font-size: 1.05rem;">
+                <i class="fa-solid fa-paper-plane"></i> Send Application to mcssscrimeprivention@hotmail.com
               </button>
+              <div class="info-note">
+                <i class="fa-solid fa-circle-info"></i> Clicking submit opens your email app with all fields filled in, ready to send immediately to the desk.
+              </div>
             </div>
           </div>
         </form>
@@ -881,7 +897,7 @@
     </div>
   </section>
 
-  <!-- Contact & HQ Details (Extracted from 20260916125557929.pdf) -->
+  <!-- Contact & HQ Details -->
   <section class="contact-sec" id="contact">
     <div class="container">
       <div class="section-title">
@@ -951,12 +967,73 @@
   </footer>
 
   <script>
-    function handleFormSubmit(event) {
+    function sendFormToEmail(event) {
       event.preventDefault();
-      const name = document.getElementById('firstName').value;
-      const surname = document.getElementById('lastName').value;
-      alert(`Thank you, ${name} ${surname}! Your application for Mogoba Community Safety and Security Services has been recorded. Our committee secretary will review your submission.`);
-      event.target.reset();
+
+      const reasonCheckboxes = document.querySelectorAll('input[name="reason"]:checked');
+      if (reasonCheckboxes.length === 0) {
+        alert("Please tick at least one reason for joining or continuing with Mogoba Safety.");
+        return;
+      }
+
+      const declaration = document.getElementById('declaration');
+      if (!declaration.checked) {
+        alert("You must agree to abide by the MCSSS Constitution and Code of Conduct.");
+        return;
+      }
+
+      const type = document.querySelector('input[name="membership_type"]:checked').value;
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const idNumber = document.getElementById('idNumber').value.trim();
+      const dob = document.getElementById('dob').value;
+      const phone = document.getElementById('cellNumber').value.trim();
+      const applicantEmail = document.getElementById('emailAddr').value.trim();
+      const address = document.getElementById('physicalAddr').value.trim();
+      const section = document.getElementById('sectionArea').value.trim();
+      const emergencyName = document.getElementById('emergencyName').value.trim();
+      const emergencyPhone = document.getElementById('emergencyPhone').value.trim();
+      const skills = document.getElementById('skills').value.trim();
+
+      const selectedReasons = Array.from(reasonCheckboxes).map(cb => "- " + cb.value).join("\n");
+
+      const emailRecipient = "mcssscrimeprivention@hotmail.com";
+      const emailSubject = `MCSSS Membership Application - ${firstName} ${lastName}`;
+      
+      const emailBody = 
+`MOGOBA COMMUNITY SAFETY AND SECURITY SERVICES
+MEMBERSHIP APPLICATION FORM SUBMISSION
+
+-----------------------------------------
+MEMBERSHIP TYPE:
+${type}
+
+APPLICANT DETAILS:
+- Full Name: ${firstName} ${lastName}
+- South African ID / Passport: ${idNumber}
+- Date of Birth: ${dob}F
+- Cell Phone: ${phone}
+- Email: ${applicantEmail}
+- Physical Address: ${address}
+- Section / Ward: ${section}
+
+REASON(S) FOR JOINING:
+${selectedReasons}
+
+EMERGENCY CONTACT:
+- Name: ${emergencyName}
+- Phone: ${emergencyPhone}
+
+SKILLS & EXPERIENCE:
+${skills}
+
+DECLARATION:
+[X] Agreed and confirmed adherence to the MCSSS Constitution and Code of Conduct.
+Date of submission: ${new Date().toLocaleDateString()}
+-----------------------------------------`;
+
+      const mailtoUrl = `mailto:${emailRecipient}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      window.location.href = mailtoUrl;
     }
   </script>
 </body>
